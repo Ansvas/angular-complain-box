@@ -8,6 +8,11 @@ const morgan = require('morgan');
 
 app.use(bodyparser.urlencoded({ extended: true}));
 app.use(bodyparser.json());
+app.use(function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+ });
 
 var port = process.env.PORT || 8080;
 
@@ -22,7 +27,11 @@ const connection = mysql.createConnection({
 router.post('/auth',function(req,res)
 {
 	console.log(req.body);
+	if(req.body.user_type=='user')
 	var query= 'SELECT * FROM users where email = "'+req.body.email+'" and password = "'+req.body.password+'"';
+	if(req.body.user_type=='admin')
+	var query= 'SELECT * FROM admin where email = "'+req.body.email+'" and password = "'+req.body.password+'"';
+
 	console.log(query);
 	connection.query(query,(err,rows,fields) => {
 		console.log('we fetched users successfully');
@@ -60,6 +69,7 @@ router.post('/register',function(req,res)
 	})
 })
 
+
 router.post('/comment',function(req,res)
 {
 	console.log(req.body);
@@ -82,7 +92,7 @@ router.post('/comment',function(req,res)
 	})
 })
 
-router.get('/comment',function(req,res)
+router.post('/getcomment',function(req,res)
 {
 	var count=0;
 	/*build query*/
@@ -97,7 +107,6 @@ router.get('/comment',function(req,res)
 			query = query+' user_id = '+req.body.user_id;
 			count++;
 		}
-
 
 		if(req.body.comm_id)
 		{
@@ -133,8 +142,12 @@ router.get('/comment',function(req,res)
 router.post('/complain',function(req,res)
 {
 	console.log(req.body);
+	var date = new Date();
+	var Dtime = date.getTime();
+	console.log(Dtime);
+	var status = 9;
 	if(req.body.user_id && req.body.title && req.body.body);
-	var query= 'INSERT INTO complaints (user_id,title,body) VALUES ('+req.body.user_id+',"'+req.body.title+'","'+req.body.body+'")';
+	var query= 'INSERT INTO complaints (user_id,title,body,status,date) VALUES ('+req.body.user_id+',"'+req.body.title+'","'+req.body.body+'",'+status+',now())';
 	console.log(query);
 	connection.query(query,(err,rows,fields) => {
 		if(err)
@@ -150,7 +163,7 @@ router.post('/complain',function(req,res)
 	})
 })
 
-router.get('/complain',function(req,res)
+router.post('/getcomplain',function(req,res)
 {
 	var count=0;
 
