@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2019 at 07:35 PM
+-- Generation Time: Apr 08, 2019 at 11:27 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -63,7 +63,9 @@ INSERT INTO `comments` (`comm_id`, `comp_id`, `user_id`, `comment`) VALUES
 (2, 1, 1, 'my phone is not working(duplicate)'),
 (3, 1, 1, 'my phone is not working(duplicate)'),
 (4, 6, 5, 'new comment'),
-(5, 6, 5, 'new comment');
+(5, 6, 5, 'new comment'),
+(6, 6, 8, 'first comment from ui'),
+(7, 6, 8, 'second comment from ui');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,8 @@ INSERT INTO `complaints` (`comp_id`, `user_id`, `title`, `body`, `status`, `date
 (4, 7, 'new title', 'new body', 9, '0000-00-00 00:00:00'),
 (5, 7, 'new title', 'new body', 9, '2019-04-08 16:32:45'),
 (6, 8, 'title1', 'body1', 9, '2019-04-08 17:38:01'),
-(7, 8, 'title2', 'body2', 9, '2019-04-08 17:38:28');
+(7, 8, 'title2', 'body2', 9, '2019-04-08 17:38:28'),
+(8, 8, 'first complain from uititle', 'this is the first complain from ui description part', 9, '2019-04-09 01:31:48');
 
 -- --------------------------------------------------------
 
@@ -161,13 +164,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `comm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
