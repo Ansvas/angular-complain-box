@@ -1,0 +1,29 @@
+<form class="formwidth" (ngSubmit)="onSubmit()" #registerForm="ngForm" novalidate>
+<div class="example-container">
+  
+  <div class="inside">    
+      <div class="head-inside">
+        <h2>Registration</h2>
+      </div>
+      <mat-form-field>
+        <input [(ngModel)]="userModel.email" name="email" type="email" matInput placeholder="Enter email here" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="userModel.password" name="password" type="password" matInput placeholder="Enter password here" required>
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <mat-select placeholder="Select">
+          <mat-option value="option">User</mat-option>
+          <mat-option value="option">Admin</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <div class="example-button-row">
+        <button [disabled]="registerForm.form.invalid" name="register" type="submit" mat-raised-button color="accent">Register</button>
+      </div> 
+      <a href="/login">Already have an account?Login here</a>   
+  </div>
+</div>
+</form>

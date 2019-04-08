@@ -1,0 +1,46 @@
+<form class="formwidth" (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+<div class="example-container">
+
+  <div class="inside">
+  {{ loginForm.value | json}}    
+      <div class="head-inside">
+        <h2>Login</h2>
+      </div>
+      <mat-form-field>
+        <input [(ngModel)]="userModel.email" name="email" type="email" matInput placeholder="Enter email here" required>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input [(ngModel)]="userModel.password" name="password" type="password" matInput placeholder="Enter password here" required="">
+      </mat-form-field>
+
+<!--   <div [formGroup]="myGroup">
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" name="email" formControlName='email' required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+</div>
+
+ <div [formGroup]="myGroup">
+      <input formControlName="firstName">
+    </div>
+ -->
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="userModel.user_type" name="user_type" placeholder="Select" required>
+          <mat-option value="user">User</mat-option>
+          <mat-option value="admin">Admin</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="example-button-row">
+        <button [disabled]="loginForm.form.invalid" type="submit" mat-raised-button color="accent">Login</button>
+      </div> 
+      <a href="/register">Don't have account?Register here</a>   
+  </div>
+</div>
+
+</form>
+
+

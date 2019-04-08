@@ -1,0 +1,18 @@
+table tr {
+	display: table-cell;
+}
+table tr td {
+	display: block;
+}
+.container {
+	background-color: #bdffdf;
+	
+	margin: 5% auto;
+	width: 50%;
+  	display: flex;
+  	flex-direction: column;
+}
+.head{
+	text-align: center;
+	margin: 10px;
+}
