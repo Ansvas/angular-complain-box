@@ -6,6 +6,7 @@ Step1:
 Clone project- git clone https://github.com/Ansvas/angular-complain-box
 <br>
 Step2:- cd back-nodejs<br>
+Step3:- Open mysql database and import angulardb.sql<br>
 Step3:- npm install<br>
 Step4:- Start Server using command:-  nodemon app.js<br>
 
