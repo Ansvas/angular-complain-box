@@ -4,8 +4,6 @@ import { User } from './user';
 import { Comment } from './comment';
 import { Complain } from './complain';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,19 +24,19 @@ export class RegisterService {
   	return this._http.post<any>(this._url,user);
   }
 
-  getcomplain(user: User)
+  getcomplain(sendmodel)
   {
   	this._url = 'http://localhost:8080/api/getcomplain';
-  	return this._http.post<any>(this._url,user);
+  	return this._http.post<any>(this._url,sendmodel);
   }
 
-    getcomment(comp)
+  getcomment(comp)
   {
     this._url = 'http://localhost:8080/api/getcomment';
     return this._http.post<any>(this._url,comp);
   }
 
-   comment(comp: Comment)
+  comment(comp: Comment)
   {
     this._url = 'http://localhost:8080/api/comment';
     return this._http.post<any>(this._url,comp);
@@ -49,6 +47,4 @@ export class RegisterService {
     this._url = 'http://localhost:8080/api/complain';
     return this._http.post<any>(this._url,compl);
   }
-
-
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="user" class="container">
   <div class="head"><h2>Complaints</h2></div>
 <table class="table">
   <thead>
@@ -54,3 +54,58 @@
 </form>
 </div>
 
+<div *ngIf="admin" class="container">
+  <div class="head"><h2> Admin Complaints</h2></div>
+<table class="table">
+  <thead>
+  <th>id</th>
+  <th>title</th>
+  <th>Status</th>
+  <th>Date</th>
+  <th>comment</th>
+  <th>Edit</th>
+</thead>
+<tbody>
+    <tr>
+        <td *ngFor="let mobile of data">{{mobile.comp_id}}</td>        
+    </tr>
+    <tr>
+        <td *ngFor="let mobile of data">{{mobile.title}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let mobile of data">{{mobile.status}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let mobile of data">{{mobile.date}}</td>
+    </tr>
+    <tr>
+        <td *ngFor="let mobile of data"><a href="comment?comp_id={{mobile.comp_id}}">comment</a></td>
+    </tr>
+    <tr>
+        <td *ngFor="let mobile of data"><a href="complain/Edit?comp_id={{mobile.comp_id}}">Edit</a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- 
+<form class="formwidth" (ngSubmit)="onSubmit()" #complainForm="ngForm" novalidate>
+<div class="example-container">
+  
+  <div class="inside">    
+      <div class="head-inside">
+        <h2>Add Complain</h2>
+      </div>
+      <mat-form-field>
+        <input [(ngModel)]="complainModel.title" name="title" type="text" matInput placeholder="Enter title here" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [(ngModel)]="complainModel.body" name="body" type="text" matInput placeholder="Enter Description here" required>
+      </mat-form-field>
+
+      <div class="example-button-row">
+        <button [disabled]="complainForm.form.invalid" name="complain_btn" type="submit" mat-raised-button color="accent">Submit</button>
+  </div>
+</div>
+</div>
+</form> -->
+</div>
