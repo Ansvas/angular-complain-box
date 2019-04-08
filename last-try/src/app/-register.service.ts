@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { Comment } from './comment';
+import { Complain } from './complain';
 
 
 
@@ -31,10 +32,22 @@ export class RegisterService {
   	return this._http.post<any>(this._url,user);
   }
 
-    getcomment(comp: Comment)
+    getcomment(comp)
   {
     this._url = 'http://localhost:8080/api/getcomment';
     return this._http.post<any>(this._url,comp);
+  }
+
+   comment(comp: Comment)
+  {
+    this._url = 'http://localhost:8080/api/comment';
+    return this._http.post<any>(this._url,comp);
+  }
+
+  complain(compl: Complain)
+  {
+    this._url = 'http://localhost:8080/api/complain';
+    return this._http.post<any>(this._url,compl);
   }
 
 

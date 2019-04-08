@@ -16,6 +16,24 @@
     </tr>
     </tbody>
 </table>
+
+<form class="formwidth" (ngSubmit)="onSubmit()" #commentForm="ngForm" novalidate>
+<div class="example-container">
+  
+  <div class="inside">    
+      <div class="head-inside">
+        <h2>Add Comment</h2>
+      </div>
+      <mat-form-field>
+        <input [(ngModel)]="commentModel.comment" name="comment" type="text" matInput placeholder="Enter Comment here" required>
+      </mat-form-field>
+
+      <div class="example-button-row">
+        <button [disabled]="commentForm.form.invalid" name="comment_btn" type="submit" mat-raised-button color="accent">Submit</button>
+	</div>
+</div>
+</div>
+</form>
 </div>
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { Complain } from '../complain';
 import { RegisterService } from '../-register.service';
 
 @Component({
@@ -9,6 +10,10 @@ import { RegisterService } from '../-register.service';
 })
 export class ComplainComponent implements OnInit {
 	userModel = new User(localStorage.getItem('user_id'),'','','');
+
+  complainModel = new Complain('','','','','');
+
+
 
   user_id = localStorage.getItem('user_id');
 	email=localStorage.getItem('user_email');
@@ -43,6 +48,16 @@ export class ComplainComponent implements OnInit {
     {
       console.log('fails:'+error);
     }
+
+    onSubmit()
+    {
+      this.complainModel.user_id=localStorage.getItem('user_id');
+      this._registerService.complain(this.complainModel)
+      .subscribe(
+        data => alert('success!'+data),
+        error => alert('error:'+error)
+        )
+    }    
 
 }
 

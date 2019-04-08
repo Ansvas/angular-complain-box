@@ -9,20 +9,23 @@ import { RegisterService } from '../-register.service';
 })
 export class CommentComponent implements OnInit {
 
-
-	commentModel = new Comment('');
+	user_id=localStorage.getItem('user_id');
+	commentModel = new Comment('',this.user_id,'');
+	comdata={comp_id:''};
 	data: any;
 
   	constructor(private _registerService: RegisterService) { }
 
   ngOnInit() {
+  	/*get param from url*/
   	var url_string = window.location.href; //window.location.href
 	var url = new URL(url_string);
 	var c = url.searchParams.get("comp_id");
 	console.log(c);
+	this.comdata.comp_id=c;
 	this.commentModel.comp_id=c;
 
-	this._registerService.getcomment(this.commentModel)
+	this._registerService.getcomment(this.comdata)
     .subscribe(
       data => this.success(data),
       error => this.fails(error)
@@ -39,7 +42,15 @@ export class CommentComponent implements OnInit {
     {
       console.log('fails:'+error);
     }
-  	
+
+     onSubmit()
+	  {
+	  	this._registerService.comment(this.commentModel)
+	  	.subscribe(
+	  		data => alert('success!'+data),
+	  		error => alert('error:'+error)
+	  		)
+	  }  	
 }
 
 

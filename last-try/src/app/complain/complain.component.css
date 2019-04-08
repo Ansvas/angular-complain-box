@@ -21,3 +21,37 @@ table tr td {
   	display: flex;
   	flex-direction: column;
 }
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-button-row{
+	align-items: center;
+	text-align: center;
+}
+
+.example-container {
+	background-color: #bdffdf;
+	
+	margin: 5% auto;
+	width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inside{
+	background-color: #bdffdf;
+	text-align: center;
+	margin: 5% auto;
+	width: 60%;
+	display: flex;
+  flex-direction: column;
+}
+
+.head-inside{
+	text-align: center;
+	margin: 5% auto;
+	width: 100%;
+}
